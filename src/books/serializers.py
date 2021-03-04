@@ -21,7 +21,7 @@ class SavedBookSerializer(serializers.ModelSerializer):
 class RentedBookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ('book', 'user', 'created', 'state')
+        fields = ('book', 'user', 'created', 'state', 'term')
 
 
 class ReviewSerializer(serializers.ModelSerializer):

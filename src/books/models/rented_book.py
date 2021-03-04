@@ -23,6 +23,10 @@ class RentedBook(models.Model):
         verbose_name=_('state'), help_text=_('state'),
         max_length=32, default='reading'
     )
+    term = models.IntegerField(
+        verbose_name=_('term'), help_text=_('term'),
+        default=0
+    )
 
     objects: Manager
 
