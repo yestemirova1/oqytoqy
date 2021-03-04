@@ -41,7 +41,7 @@ class Book(models.Model):
         default=0
     )
     language = models.CharField(
-        verbose_name=_('isbn'), help_text=_('isbn'),
+        verbose_name=_('language'), help_text=_('language'),
         max_length=32, default='russian'
     )
 
