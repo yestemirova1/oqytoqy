@@ -9,6 +9,7 @@ urlpatterns = i18n_patterns(
 )
 urlpatterns += (
     path(route='silk/', view=include(arg='silk.urls')),
+    path(route='api/', view=include(arg='books.urls')),
 )
 
 if DEBUG:
