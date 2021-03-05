@@ -1,7 +1,11 @@
+from django.urls import path
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.routers import DefaultRouter
 
 from books.views import (
     BookViewSet, RentedBookViewSet, ReviewViewSet, SavedBookViewSet,
+    UserViewSet,
 )
 
 router = DefaultRouter()
@@ -17,4 +21,9 @@ router.register(
 router.register(
     prefix='saved_books', viewset=SavedBookViewSet, basename='saved_books',
 )
-urlpatterns = router.urls
+router.register(
+    prefix='users', viewset=UserViewSet, basename='users',
+)
+urlpatterns = router.urls + [
+    path(route='auth/', view=csrf_exempt(ObtainAuthToken.as_view())),
+]

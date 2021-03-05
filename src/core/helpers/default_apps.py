@@ -6,8 +6,8 @@ DJANGO_APPS: Tuple[str, ...] = (
     'django.contrib.messages', 'django.contrib.sessions',
 )
 SIDE_APPS: Tuple[str, ...] = (
-    'corsheaders', 'rest_framework', 'django_extensions',
-    'django_filters', 'django_fsm', 'silk',
+    'corsheaders', 'rest_framework', 'rest_framework.authtoken',
+    'django_extensions', 'django_filters', 'django_fsm', 'silk',
 )
 PROJECT_APPS: Tuple[str, ...] = ('common', 'books')
 message: str = 'no more than 5 apps per django project'
