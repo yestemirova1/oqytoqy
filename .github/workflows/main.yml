@@ -1,0 +1,17 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: "c851ff8a-abbf-41eb-9935-4aba5ba0c148"
+          heroku_app_name: "oqytoqy"
+          heroku_email: "dina.yestemir@gmail.com"
