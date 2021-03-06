@@ -15,3 +15,4 @@ jobs:
           heroku_api_key: "c851ff8a-abbf-41eb-9935-4aba5ba0c148"
           heroku_app_name: "oqytoqy"
           heroku_email: "dina.yestemir@gmail.com"
+          docker_compose_file: './docker-compose.yml'
