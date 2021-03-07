@@ -4,8 +4,7 @@ ENV PYTHONUNBUFFERED=1 COLUMNS=200 \
     TZ=Asia/Almaty PIP_CONFIG_FILE=/src/pip.conf
 
 ADD ./src/requirements.txt \
-    ./src/dev_requirements.txt \
-    ./src/pip.conf /src/
+    ./src/dev_requirements.txt
 
 RUN sed -i "s/dl-cdn.alpinelinux.org/mirror.neolabs.kz/g" /etc/apk/repositories \
     && apk update \
@@ -14,7 +13,7 @@ RUN sed -i "s/dl-cdn.alpinelinux.org/mirror.neolabs.kz/g" /etc/apk/repositories 
     && ln -fs /usr/share/zoneinfo/Asia/Almaty /etc/localtime \
     && echo "Asia/Almaty" > /etc/timezone \
     && pip install --upgrade pip \
-    && pip install --no-cache-dir -Ur ./requirements.txt --no-cache-dir -Ur ./dev_requirements.txt \
+    && pip install --no-cache-dir -Ur /src/requirements.txt \
     && apk del .build-deps
 
 COPY ./src /src
