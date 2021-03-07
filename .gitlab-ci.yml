@@ -23,5 +23,5 @@ variables:
   before_script:
     - apk add curl bash
     - curl https://cli-assets.heroku.com/install.sh | sh
-    script:
-      - heroku container:release -a oqytoqy django
+  script:
+    - heroku container:release -a oqytoqy django
