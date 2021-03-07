@@ -1,4 +1,4 @@
-FROM docker-proxy.choco.kz/python:3.9.2-alpine3.12
+FROM python:3.8-slim
 
 ENV PYTHONUNBUFFERED=1 COLUMNS=200 \
     TZ=Asia/Almaty PIP_CONFIG_FILE=/src/pip.conf

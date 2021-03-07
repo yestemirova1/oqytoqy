@@ -3,7 +3,7 @@ version: '3.7'
 services:
   postgres:
     container_name: postgres
-    image: docker-proxy.choco.kz/postgres:13.2-alpine
+    image: postgres:13.2-alpine
     environment:
       POSTGRES_DB: db
       POSTGRES_USER: user
@@ -13,24 +13,13 @@ services:
 
   rabbitmq:
     container_name: rabbitmq
-    image: docker-proxy.choco.kz/rabbitmq:3.8.12-management-alpine
+    image: rabbitmq:3.8.12-management-alpine
     environment:
       - RABBITMQ_DEFAULT_VHOST=vhost
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=pass
     logging:
       driver: none
-
-  centrifugo:
-    container_name: centrifugo
-    image: docker-proxy.choco.kz/centrifugo/centrifugo:v2.8.2
-    command: centrifugo -c config.json
-    volumes:
-      - ./external/centrifugo:/centrifugo
-    logging:
-      driver: none
-    ports:
-      - 9000:8000
 
   django:
     container_name: django
