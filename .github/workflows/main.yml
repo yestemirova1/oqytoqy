@@ -1,4 +1,10 @@
 name: '' #set whatevername you want to your github job
+on:
+  push:
+    branches:
+      - main
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
