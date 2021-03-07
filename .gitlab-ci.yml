@@ -1,8 +1,7 @@
 image: docker-proxy.choco.kz/docker:20.10.0
 stages:
   - containerize
-  - lint
-  - test
+  - deploy
 
 include:
   - project: 'templates/ci'
@@ -15,37 +14,14 @@ variables:
   RABBITMQ_DEFAULT_VHOST: vhost
   RABBITMQ_DEFAULT_USER: user
   RABBITMQ_DEFAULT_PASS: pass
-  CENTRIFUGO_ADDRESS: 0.0.0.0
-  CENTRIFUGO_PORT: 9000
-  CENTRIFUGO_TOKEN_HMAC_SECRET_KEY: EEF1C415FE8D22F5DD661162328B1
-  CENTRIFUGO_API_KEY: A278C853943681FFE4E8C3C145E74
-  CENTRIFUGO_NAMESPACES: '[{"name": "seed", "history_size": 16, "history_lifetime": 512, "history_recover": true}]'
 
-.test: &test
-  stage: test
-  retry: 2
+.deploy: &deploy
+  stage: deploy
   tags:
     - docker
   image: ${RELEASE_IMAGE}
-  script:
-    - cp ci_cd/ci/ci.env /src/core/.env && cd src && bash entrypoint.sh
-
-lint:
-  services:
-    - name: docker-proxy.choco.kz/postgres:13.2-alpine
-      alias: postgres
-  variables:
-    PROCESS: LINT
-  <<: *test
-
-test:
-  services:
-    - name: docker-proxy.choco.kz/postgres:13.2-alpine
-      alias: postgres
-    - name: docker-proxy.choco.kz/rabbitmq:3.8.12-management-alpine
-      alias: rabbitmq
-    - name: docker-proxy.choco.kz/centrifugo/centrifugo:v2.8.2
-      alias: centrifugo
-  variables:
-    PROCESS: TEST
-  <<: *test
+  before_script:
+    - apk add curl bash
+    - curl https://cli-assets.heroku.com/install.sh | sh
+    script:
+      - heroku container:release -a oqytoqy django
