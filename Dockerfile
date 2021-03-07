@@ -7,7 +7,7 @@ ADD ./src/requirements.txt \
     ./src/dev_requirements.txt \
     ./src/pip.conf /src/
 
-RUN sed -i "s/dl-cdn.alpinelinux.org/mirror.neolabs.kz/g" /etc/apk/repositories
+RUN sed -i "s/dl-cdn.alpinelinux.org/mirror.neolabs.kz/g" /etc/apk/repositories && apk update
 
 COPY ./src /src
 
