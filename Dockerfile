@@ -14,6 +14,7 @@ RUN sed -i "s/dl-cdn.alpinelinux.org/mirror.neolabs.kz/g" /etc/apk/repositories 
     && ln -fs /usr/share/zoneinfo/Asia/Almaty /etc/localtime \
     && echo "Asia/Almaty" > /etc/timezone \
     && pip install --upgrade pip \
+    && pip install --no-cache-dir -Ur /src/requirements.txt \
     && apk del .build-deps
 
 COPY ./src /src
