@@ -1,7 +1,7 @@
 image: docker-proxy.choco.kz/docker:20.10.0
 stages:
   - containerize
-  - deploy
+  - release
 
 include:
   - project: 'templates/ci'
@@ -15,8 +15,8 @@ variables:
   RABBITMQ_DEFAULT_USER: user
   RABBITMQ_DEFAULT_PASS: pass
 
-.deploy: &deploy
-  stage: deploy
+.release: &release
+  stage: release
   tags:
     - docker
   image: ${RELEASE_IMAGE}
