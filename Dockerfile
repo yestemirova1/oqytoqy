@@ -1,4 +1,4 @@
-FROM python:3.8-alpine3.11
+FROM python:3.8.3-alpine3.11
 
 ENV PYTHONUNBUFFERED=1 COLUMNS=200 \
     TZ=Asia/Almaty PIP_CONFIG_FILE=/src/pip.conf
@@ -31,4 +31,4 @@ RUN sed -i "s/dl-cdn.alpinelinux.org/mirror.neolabs.kz/g" \
 COPY ./src /src
 
 WORKDIR /src
-CMD ["/src/entrypoint.sh"]
+CMD ["./entrypoint.sh"]
