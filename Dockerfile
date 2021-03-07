@@ -10,7 +10,8 @@ ADD ./src/requirements.txt \
 RUN sed -i "s/dl-cdn.alpinelinux.org/mirror.neolabs.kz/g" \
     /etc/apk/repositories \
     && apk update \
-    && apk --no-cache add bash postgresql-dev binutils gdal-dev geos-dev \
+    && apk --no-cache add bash postgresql-dev \
+    binutils gdal-dev geos-dev \
 # Django translations
     gettext \
 # Add build dependencies
