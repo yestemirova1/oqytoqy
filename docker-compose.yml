@@ -13,7 +13,7 @@ services:
 
   django:
     container_name: django
-    build: ./
+    image: yestemirova/oqytorydjango
     volumes:
       - ./src:/src:rw
       - ./.env:/src/core/.env
