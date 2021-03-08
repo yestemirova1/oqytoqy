@@ -11,16 +11,6 @@ services:
     logging:
       driver: none
 
-  rabbitmq:
-    container_name: rabbitmq
-    image: rabbitmq:3.8.12-management-alpine
-    environment:
-      - RABBITMQ_DEFAULT_VHOST=vhost
-      - RABBITMQ_DEFAULT_USER=user
-      - RABBITMQ_DEFAULT_PASS=pass
-    logging:
-      driver: none
-
   django:
     container_name: django
     build: ./
@@ -49,15 +39,3 @@ services:
       flake8: flake8 .
       check: python manage.py check --deploy
       shell: python manage.py shell_plus
-
-  celery:
-    container_name: celery
-    build: ./
-    volumes:
-      - ./src:/src:rw
-      - ./.env:/src/core/.env
-    depends_on:
-      - postgres
-      - rabbitmq
-    environment:
-      PROCESS: DEV_CELERY
