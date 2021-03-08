@@ -18,4 +18,4 @@ jobs:
           email: 'dina.yestemir@gmail.com'
           api_key: 'c851ff8a-abbf-41eb-9935-4aba5ba0c148'
           docker_compose_file: './docker-compose.yml'
-          heroku_apps: '[{"imagename":"django","appname":"oqytoqy","apptype":"django"}]'
+          heroku_apps: '[{"imagename":"django:latest","appname":"oqytoqy","apptype":"django"}]'
